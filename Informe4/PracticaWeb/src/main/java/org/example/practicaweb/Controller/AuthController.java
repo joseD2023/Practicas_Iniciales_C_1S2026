@@ -40,6 +40,8 @@ public class AuthController {
         return "Usuario registrado correctamente";
     }
 
+
+
     // Login
     @PostMapping("/login")
     public String login(@RequestBody Usuario user, HttpServletRequest request) throws Exception {
@@ -51,10 +53,7 @@ public class AuthController {
                     )
             );
 
-            // Esto es crucial
             SecurityContextHolder.getContext().setAuthentication(auth);
-
-            // Guardar explícitamente en sesión
             HttpSession session = request.getSession(true);
             session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 

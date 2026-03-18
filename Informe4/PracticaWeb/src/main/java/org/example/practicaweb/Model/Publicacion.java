@@ -28,6 +28,7 @@ public class Publicacion {
     private String contenido;
 
 
+
     @NotNull(message = "La fecha es obligatoria")
     private LocalDate fechaCreacion;
 
