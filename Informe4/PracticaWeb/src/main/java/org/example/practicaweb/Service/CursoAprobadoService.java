@@ -1,7 +1,11 @@
 package org.example.practicaweb.Service;
 
 import org.example.practicaweb.Model.CursoAprobado;
+import org.example.practicaweb.Model.Usuario;
 import org.example.practicaweb.Repository.CursoAprobadoRepository;
+import org.example.practicaweb.Repository.UsuarioRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,16 +13,29 @@ import java.util.List;
 @Service
 public class CursoAprobadoService {
     private final CursoAprobadoRepository cursoAprobadoRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public CursoAprobadoService(CursoAprobadoRepository cursoAprobadoRepository) {
+    public CursoAprobadoService(CursoAprobadoRepository cursoAprobadoRepository, UsuarioRepository usuarioRepository) {
         this.cursoAprobadoRepository = cursoAprobadoRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public CursoAprobado createCursoAprobado(CursoAprobado curso){
+        /*como tal necesito digamos crear cursos solo con el usuario que a hecho el login no
+        * con otra persona la otra persona solo podra ver los cursos o perfiles que el usuario
+        * ha aprobado
+        * Entonces necesitamos nuestro usuario logueado*/
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String registroAcademico = authentication.getName();
+        Usuario usuario = usuarioRepository.findByRegistroAcademico(Integer.parseInt(registroAcademico));
+        curso.setUsuario(usuario);
         return cursoAprobadoRepository.save(curso);
     }
 
     public List<CursoAprobado> getAllCursosAprobados(){
         return cursoAprobadoRepository.findAll();
     }
+
+
 }

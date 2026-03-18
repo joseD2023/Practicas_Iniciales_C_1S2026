@@ -32,10 +32,9 @@ public class CursoAprobado {
 
     private LocalDate fechaAprobacion;
 
-    public CursoAprobado(String nombreCursos, int creditos, Usuario usuario, LocalDate fechaAprobacion){
+    public CursoAprobado(String nombreCursos, int creditos, LocalDate fechaAprobacion){
         this.nombreCursos = nombreCursos;
         this.creditos = creditos;
-        this.usuario = usuario;
         this.fechaAprobacion = fechaAprobacion;
     }
 

@@ -42,6 +42,7 @@ public class PublicacionesService {
     }
 
     public Publicacion createPublicacion(Publicacion publicacion){
+        /*tenemos que verificar que solo el usuarios logueado puede publicar*/
 
         return publicacionRepository.save(publicacion);
     }

@@ -18,7 +18,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             // Convertir String a int
             int registroAcademico = Integer.parseInt(registroAcademicoStr);
 
-            // Buscar por registro académico (int)
             Usuario user = userRepository.findByRegistroAcademico(registroAcademico);
 
             if (user == null) {

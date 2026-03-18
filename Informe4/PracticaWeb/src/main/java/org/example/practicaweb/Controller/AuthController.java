@@ -3,10 +3,13 @@ package org.example.practicaweb.Controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.example.practicaweb.Model.RecuperarPassword;
 import org.example.practicaweb.Model.Usuario;
 import org.example.practicaweb.Service.UserDetailsServiceImpl;
 import org.example.practicaweb.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -44,7 +47,7 @@ public class AuthController {
 
     // Login
     @PostMapping("/login")
-    public String login(@RequestBody Usuario user, HttpServletRequest request) throws Exception {
+    public ResponseEntity<?> login(@RequestBody Usuario user, HttpServletRequest request) throws Exception {
         try {
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -58,8 +61,20 @@ public class AuthController {
             session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 
         } catch (BadCredentialsException e) {
-            throw new Exception("Usuario o contraseña incorrecta");
+            //respuesta HTTP 401 usuario no autorizado
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o Contraseña Incorrecta");
         }
-        return "Login exitoso";
+        //respuesta HTTP 200 bien
+        return ResponseEntity.ok("Login exitoso");
+    }
+
+
+    @PostMapping ("/recuperar-password")
+    public ResponseEntity<?> obtenerPasswordNew(@RequestBody RecuperarPassword recuperarPassword){
+        if(userService.recuperarPasswordOlvidado(recuperarPassword)){
+            return ResponseEntity.ok("Contraseña Actualizada Correctamente");
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Datos Incorrectos");
     }
 }

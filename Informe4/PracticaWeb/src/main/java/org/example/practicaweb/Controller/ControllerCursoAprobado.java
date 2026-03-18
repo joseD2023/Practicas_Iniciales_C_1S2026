@@ -19,7 +19,7 @@ public class ControllerCursoAprobado {
         this.cursoAprobadoService = cursoAprobadoService;
     }
 
-    @GetMapping("/perfil")
+    @GetMapping()
     public List<CursoAprobado> obtenerCursosAprobados(){
         return cursoAprobadoService.getAllCursosAprobados();
     }
