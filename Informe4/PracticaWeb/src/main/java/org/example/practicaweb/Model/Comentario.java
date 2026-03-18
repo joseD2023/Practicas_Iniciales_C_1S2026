@@ -49,8 +49,7 @@ public class Comentario {
     private Publicacion publicacion;
 
 
-    public Comentario(Usuario usuario, Publicacion publicacion, String mensaje, LocalDate fechaCreacion){
-        this.usuario = usuario;
+    public Comentario(Publicacion publicacion, String mensaje, LocalDate fechaCreacion){
         this.publicacion = publicacion;
         this.mensaje = mensaje;
         this.fechaCreacion = fechaCreacion;

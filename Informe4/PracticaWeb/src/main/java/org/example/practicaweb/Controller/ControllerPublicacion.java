@@ -19,11 +19,9 @@ import java.util.List;
 public class ControllerPublicacion {
 
     private final PublicacionesService publicacionesService;
-    private final ComentarioService comentarioService;
 
-    public ControllerPublicacion(PublicacionesService publicacionesService, ComentarioService comentarioService) {
+    public ControllerPublicacion(PublicacionesService publicacionesService) {
         this.publicacionesService = publicacionesService;
-        this.comentarioService = comentarioService;
     }
 
 

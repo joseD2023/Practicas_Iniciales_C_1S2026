@@ -30,6 +30,7 @@ public class CursoAprobadoService {
         String registroAcademico = authentication.getName();
         Usuario usuario = usuarioRepository.findByRegistroAcademico(Integer.parseInt(registroAcademico));
         curso.setUsuario(usuario);
+        curso.incrementosCreditos(curso.getCreditos()); //aqui incrementamos los creditos con los cursos agregados
         return cursoAprobadoRepository.save(curso);
     }
 

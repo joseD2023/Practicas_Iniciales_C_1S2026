@@ -55,20 +55,18 @@ public class Publicacion {
 
 
 
-    public Publicacion (String titulo, String contenido, LocalDate fechaCreacion, Usuario usuario, Catedratico catedratico){
+    public Publicacion (String titulo, String contenido, LocalDate fechaCreacion, Catedratico catedratico){
         this.titulo = titulo;
         this.contenido = contenido;
         this.fechaCreacion = fechaCreacion;
-        this.usuario = usuario;
         this.catedratico = catedratico;
     }
 
 
-    public Publicacion (String titulo, String contenido, LocalDate fechaCreacion, Usuario usuario, Curso curso){
+    public Publicacion (String titulo, String contenido, LocalDate fechaCreacion, Curso curso){
         this.titulo = titulo;
         this.contenido = contenido;
         this.fechaCreacion = fechaCreacion;
-        this.usuario = usuario;
         this.curso = curso;
     }
 

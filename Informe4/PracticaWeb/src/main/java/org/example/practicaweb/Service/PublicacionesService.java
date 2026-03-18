@@ -1,14 +1,14 @@
 package org.example.practicaweb.Service;
 
-import org.example.practicaweb.Model.Catedratico;
-import org.example.practicaweb.Model.Comentario;
-import org.example.practicaweb.Model.Curso;
-import org.example.practicaweb.Model.Publicacion;
+import org.example.practicaweb.Model.*;
 import org.example.practicaweb.Repository.ComentarioRepository;
 import org.example.practicaweb.Repository.PublicacionRepository;
+import org.example.practicaweb.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -23,11 +23,14 @@ public class PublicacionesService {
     private final PublicacionRepository publicacionRepository;
     private final ComentarioRepository comentarioRepository;
     private final ComentarioService comentarioService;
+    private final UsuarioRepository usuarioRepository;
 
-    public PublicacionesService(PublicacionRepository publicacionRepository, ComentarioRepository comentarioRepository, ComentarioService comentarioService) {
+    public PublicacionesService(PublicacionRepository publicacionRepository, ComentarioRepository comentarioRepository,
+                                ComentarioService comentarioService, UsuarioRepository usuarioRepository) {
         this.publicacionRepository = publicacionRepository;
         this.comentarioRepository = comentarioRepository;
         this.comentarioService = comentarioService;
+        this.usuarioRepository= usuarioRepository;
     }
 
     /*Entonces lo que debemos hacer es crear publicaciones
@@ -41,13 +44,21 @@ public class PublicacionesService {
         return publicacionRepository.findAll();
     }
 
-    public Publicacion createPublicacion(Publicacion publicacion){
-        /*tenemos que verificar que solo el usuarios logueado puede publicar*/
+    /*Creación de una Publicacion y con la relación del Usuario Logueado */
 
+    public Publicacion createPublicacion(Publicacion publicacion){
+        /*tenemos que verificar que solo el usuario que logueo pueda publicar y no otros usuarios como tal
+        * para eso vamos a relacionar con la autenticación sobre quien fue el que fue que logueo*/
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String registroAcademico = authentication.getName();
+        Usuario usuario = usuarioRepository.findByRegistroAcademico(Integer.parseInt(registroAcademico));
+        publicacion.setUsuario(usuario);
         return publicacionRepository.save(publicacion);
     }
 
-    public Publicacion getPublicacionById(Long id){
+
+
+    public Publicacion getPublicacionById(Long id) {
 
         return publicacionRepository.findById(id).orElse(null);
     }

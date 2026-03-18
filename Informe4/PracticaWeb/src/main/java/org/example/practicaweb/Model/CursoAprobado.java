@@ -38,6 +38,10 @@ public class CursoAprobado {
         this.fechaAprobacion = fechaAprobacion;
     }
 
+    public void incrementosCreditos(int creditosAumentar){
+        this.creditos += creditosAumentar;
+    }
+
 
 
 }
