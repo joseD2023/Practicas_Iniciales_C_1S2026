@@ -43,6 +43,15 @@ public class ControllerComentario {
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminarComentario(@PathVariable Long id){
+        if(!comentarioService.deleteComentarios(id)){
+            return ResponseEntity.notFound().build(); // si lo que intenta eliminar no existe
+
+        }
+        return ResponseEntity.ok("Eliminación Correcta");
+    }
+
 
 
 }

@@ -46,6 +46,14 @@ public class ComentarioService {
         return comentarioRepository.save(comentario);
     }
 
+    public boolean deleteComentarios(long id){
+        Comentario existeComentario = comentarioRepository.findById(id).orElse(null);
+        if(existeComentario == null){
+            return false;
+        }
+        return true;
+    }
+
 
 
 }
