@@ -65,7 +65,12 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o Contraseña Incorrecta");
         }
         //respuesta HTTP 200 bien
-        return ResponseEntity.ok("Login exitoso");
+        return ResponseEntity.ok().build(); //recibimos uns respuesta http y no un texto
+        /*esto beneficia mucho al frontend porque si enviamos texto en el cuerpo podemos traerle complicacion
+        * Dato importante para esto no utilizar mensajes de retorna si no usar respeusta HTTP
+        * porque si usamos frontend y usamos texto debemos tener en cuenta el texto porque puede causar problemas
+        * al momento de recibir una respuesta del backend al frontend
+        * RECOMENDACIÓN: usar protocolos http*/
     }
 
 

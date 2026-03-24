@@ -1,0 +1,38 @@
+
+.raiz h2{
+    margin-top:  50px;
+
+}
+
+.usuario-view{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 60px;
+    gap: 20px;
+}
+
+.usuario-view h2{
+    margin-top: 20px;
+}
+
+
+.usuarios-card{
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.usuarios-card:hover{
+    transform: translateY(-15px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+
+.usuarios-card p{
+    font-size: 14px;
+    margin-bottom: 10px; /*Espacios entre linea*/
+}

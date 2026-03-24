@@ -1,7 +1,7 @@
 *{
     margin: 0%;
     padding: 0%;
-     box-sizing: border-box; 
+    box-sizing: border-box; 
 }
 
 
@@ -40,10 +40,10 @@ body{
 .form-login button{
   width:100%;
   padding:10px;
-  background:#4CAF50;
+  background:#4d5fff6b;
   color:white;
   border:none;
-  border-radius:5px;
+  border-radius:10px;
   cursor:pointer;
 }
 
@@ -65,7 +65,7 @@ body{
 }
 
 .controls{
-      width: 100%;
+  width: 100%;
   border: 1px solid #017bab;
   margin-bottom: 15px;
   padding: 11px 10px;
@@ -73,3 +73,9 @@ body{
   font-size: 14px;
   font-weight: bold;
 }
+
+
+
+
+
+

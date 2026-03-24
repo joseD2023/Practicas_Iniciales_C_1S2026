@@ -1,9 +1,7 @@
 package org.example.practicaweb.Service;
 
 import org.example.practicaweb.Model.*;
-import org.example.practicaweb.Repository.ComentarioRepository;
-import org.example.practicaweb.Repository.PublicacionRepository;
-import org.example.practicaweb.Repository.UsuarioRepository;
+import org.example.practicaweb.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,13 +22,19 @@ public class PublicacionesService {
     private final ComentarioRepository comentarioRepository;
     private final ComentarioService comentarioService;
     private final UsuarioRepository usuarioRepository;
+    private final CursoRepository cursoRepository;
+    private final CatedraticoReponsitory catedraticoReponsitory;
 
     public PublicacionesService(PublicacionRepository publicacionRepository, ComentarioRepository comentarioRepository,
-                                ComentarioService comentarioService, UsuarioRepository usuarioRepository) {
+                                ComentarioService comentarioService, UsuarioRepository usuarioRepository,
+                                CursoRepository cursoRepository,
+                                CatedraticoReponsitory catedraticoReponsitory) {
         this.publicacionRepository = publicacionRepository;
         this.comentarioRepository = comentarioRepository;
         this.comentarioService = comentarioService;
         this.usuarioRepository= usuarioRepository;
+        this.cursoRepository = cursoRepository;
+        this.catedraticoReponsitory = catedraticoReponsitory;
     }
 
     /*Entonces lo que debemos hacer es crear publicaciones

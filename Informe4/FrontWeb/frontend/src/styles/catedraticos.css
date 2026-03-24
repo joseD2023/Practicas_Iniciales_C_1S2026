@@ -1,0 +1,28 @@
+
+
+.raiz{
+    margin-top: 40px;
+}
+
+
+.catedraticos-view{
+    display: grid;
+    gap:30px;; 
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 60px;
+}
+
+
+.catedraticos-card{
+     background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catedraticos-card:hover{
+    transform:  translateY(-15px);
+    box-shadow: 0 20px 2px rgba(0,0,0,0.2);
+    background:#6495ED ;
+}

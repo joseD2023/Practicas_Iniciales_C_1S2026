@@ -22,10 +22,10 @@ public class Catedratico {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Pattern(regexp = "[A-za-z]+")
+    @Pattern(regexp = "^(?=.*[A-Za-z])[A-Za-z ]+$")
     private String nombre;
 
-    @Pattern(regexp = "[A-za-z]+")
+    @Pattern(regexp = "^(?=.*[A-Za-z])[A-Za-z ]+$")
     private String apellido;
 
     @Email(message = "Correo Invalido")
