@@ -71,23 +71,33 @@ export const crearPublicacionesNuevas = async(nuevaPublicacion) =>{
 
 
 //ahora vamos a ver como funciona lo de filtrar publicaciones 
+export const filtrarPublicaciones = async (tipo, valor) => {
 
-export const filtrarPublicaciones = async ({ curso, catedratico, idCurso, idCatedratico }) => {
-    let url = "/detalle/filtrado?";
+  let url = "http://localhost:8080/api/publicaciones/detalle/filtrado?";
 
-    if (curso) url += `curso=${curso}&`;
-    if (catedratico) url += `catedratico=${catedratico}&`;
-    if (idCurso) url += `idCurso=${idCurso}&`;
-    if (idCatedratico) url += `idCatedratico=${idCatedratico}&`;
+  if (tipo === "curso") {
+    console.log("Tipo: ", tipo, " ", "Valor: ", valor);
+    url += `curso=${valor}`;
+} else if (tipo === "catedratico") {
+    url += `catedratico=${valor}`;
+    console.log("Tipo: ", tipo, " ", "Valor: ", valor);
 
-    // quitar último &
-    url = url.endsWith("&") ? url.slice(0, -1) : url;
+} else if (tipo === "idCurso") {
+    url += `idCurso=${valor}`;
+    console.log("Tipo: ", tipo, " ", "Valor: ", valor);  
 
-    const response = await fetch(url,{
-        method:"GET",
-        credentials:"include"
-    });
-    if (!response.ok) throw new Error("Error al filtrar");
-    const data = await response.json();
-    return data;
+} else if (tipo === "idCatedratico") {
+    url += `idCatedratico=${valor}`;
+    console.log("Tipo: ", tipo, " ", "Valor: ", valor);
+  }
+
+  const response = await fetch(url, {
+    credentials: "include" 
+  });
+
+  console.log("El filtro de la respuesta del backend es: ", response)
+  const data = await response.json(); 
+  console.log(data)
+
+  return data;
 };

@@ -8,6 +8,7 @@ import MostrarUsuarios from "../templates/usuarios";
 import MostrarCursos from "../templates/cursos";
 import MostrarCatedraticos from "../templates/catedraticos";
 import Layout from "../components/encapsular"
+import Filtrar from "../templates/Filtrar";
 
 export default function AppRouter() {
 
@@ -27,6 +28,7 @@ export default function AppRouter() {
            <Route path="/home" element={<Home />} />
           {/*publicaciones */}
            <Route path="/publicaciones" element={<Publicaciones />} />
+           
            {/*Mostrar los usuarios en el Sistema */}
            <Route path="/usuarios" element={<MostrarUsuarios/>} />
            <Route path="/cursos" element={<MostrarCursos/>} />

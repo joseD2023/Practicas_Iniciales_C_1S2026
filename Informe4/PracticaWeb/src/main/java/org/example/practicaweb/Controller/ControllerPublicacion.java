@@ -56,7 +56,7 @@ public class ControllerPublicacion {
         if(!publicacionesService.deletePublicacion(id)){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 
 

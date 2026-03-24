@@ -4,8 +4,8 @@ import { getComentariosByPublicacion } from "../service/publicacionesService";
 import { obtenerCursos } from "../service/cursos";
 import {obtenerCatedraticos } from "../service/catedratidos"; 
 import {crearPublicacionesNuevas} from "../service/publicacionesService"
-import BuscadorAvanzado from "./Filtrar";
 import "../styles/publicaciones.css";
+import Filtrar from "./Filtrar";
 
 export default function Publicaciones() {
     //Estados Principales 
@@ -145,6 +145,8 @@ export default function Publicaciones() {
             }
         }
 
+        
+
         // Mostramos los comentarios
         setComentarioVisible({
             ...comentarioVisible,
@@ -159,9 +161,7 @@ export default function Publicaciones() {
 
         <div className="publicaciones-container">
 
-            <BuscadorAvanzado />
-
-
+          
             <div className="form-publicacion"> {/*Estamos capturando la informacioon para poder guardar y publicar */}
                 <h2>Crear Publicaciones</h2>
 
@@ -210,9 +210,7 @@ export default function Publicaciones() {
                 </div>
             )}
 
-
-
-
+              < Filtrar />
             <h1>Publicaciones</h1>
 
             <div className="publicaciones-lista">

@@ -7,12 +7,9 @@ export const getComentariosByPublicacion = async (publicacion) =>{
         method : "GET", 
         credentials: "include"
     }
-    
-    
-
     )
-
-
-    
 }
+
+
+
 

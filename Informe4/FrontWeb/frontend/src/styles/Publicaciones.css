@@ -2,21 +2,25 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
+    
+
 }
 
+
+
+
 h1{
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 /*GRID tipo galería */
 .publicaciones-lista {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    margin-top: 30px;
     gap: 20px;
 }
 
-/* TARJETA */
+/* bloques  */
 .publicacion-card {
     background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
@@ -25,24 +29,24 @@ h1{
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* EFECTO HOVER */
+/* Eefectos sombreado */
 .publicacion-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* TITULO */
+/* titulos*/
 .publicacion-card h2 {
     margin-bottom: 10px;
 }
 
-/*  TEXTO */
+/*  textos */
 .publicacion-card p {
     font-size: 14px;
     margin-bottom: 10px;
 }
 
-/* BOTÓN */
+/* boton */
 .btn-comentarios {
     background: #00c853;
     color: white;
@@ -56,7 +60,7 @@ h1{
     background: #00e676;
 }
 
-/* COMENTARIOS */
+/* comentarios*/
 .comentarios-section {
     margin-top: 15px;
     background: rgba(0,0,0,0.2);
@@ -64,7 +68,7 @@ h1{
     border-radius: 8px;
 }
 
-/* ITEM COMENTARIO */
+/* cada comentario*/
 .comentario-item {
     background: rgba(255,255,255,0.1);
     padding: 8px;

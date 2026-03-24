@@ -44,8 +44,7 @@ public class PublicacionesService {
     /*Necesitamos Crear y eliminar los que son las publicaciones como tal*/
 
     public List<Publicacion> obtenerTodasPublicacion(){
-
-        return publicacionRepository.findAll();
+        return publicacionRepository.findAllByOrderByFechaCreacionDesc();
     }
 
     /*Creación de una Publicacion y con la relación del Usuario Logueado */
