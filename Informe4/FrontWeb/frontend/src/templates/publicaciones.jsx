@@ -5,6 +5,7 @@ import { obtenerCursos } from "../service/cursos";
 import {obtenerCatedraticos } from "../service/catedratidos"; 
 import {crearPublicacionesNuevas} from "../service/publicacionesService"
 import "../styles/publicaciones.css";
+import ComentarioNuevo from "./crearComentario";
 import Filtrar from "./Filtrar";
 
 export default function Publicaciones() {
@@ -145,7 +146,7 @@ export default function Publicaciones() {
             }
         }
 
-        
+
 
         // Mostramos los comentarios
         setComentarioVisible({
@@ -235,18 +236,28 @@ export default function Publicaciones() {
                                 {comentarios[pub.id]?.length > 0 ? (
                                     comentarios[pub.id].map(com => (
                                         <div key={com.id} className="comentario-item">
-                                            <strong> ID Usuario: {com.id}:</strong>
+                                            <strong> ID Comentario: {com.id}:</strong>
+                                            <p>Usuario que lo Publico: {pub.id}</p>
                                             <p>{com.mensaje}</p>
                                             <small>{new Date(com.fechaCreacion).toLocaleDateString()}</small>
+
                                         </div>
                                     ))
                                 ) : (
                                     <p>No hay comentarios</p>
+
                                  
-                                )}
+                                )}   
+  
 
                             </div>
+
+                            
+
+
                         )}
+
+                         <ComentarioNuevo idPublicaciones={pub.id} />  
                     </div>
                 ))}
             </div>
