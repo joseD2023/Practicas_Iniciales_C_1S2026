@@ -101,3 +101,55 @@ export const filtrarPublicaciones = async (tipo, valor) => {
 
   return data;
 };
+
+
+
+
+//aqui vamos a usar lo que son cursos aprobados tanto para obtenerlos como para crearlos 
+
+const API_URL1 = "http://localhost:8080/api/cursos-aprobados"; 
+
+
+export const obtenerCursosAprobados = async() =>{
+
+    try {
+        const response = await fetch(`${API_URL1}/mis-cursos`, {
+            method:"GET", 
+            credentials: "include"
+        })
+
+        if(!response.ok){ throw new Error("Error: 500");
+        }
+
+        return await response.json(); 
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export const crearCursosAprobados = async(cursosAprobados) =>{
+    try {
+
+        console.log(cursosAprobados);
+
+        const response = await fetch(API_URL1, {
+            method:"POST", 
+            credentials: "include", 
+            headers : {
+                'Content-Type': 'application/json'
+            }, 
+            body : JSON.stringify(cursosAprobados)
+        }); 
+
+        if(!response.ok){throw new Error("Error: 500");
+        }
+
+        return await response.json();
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}

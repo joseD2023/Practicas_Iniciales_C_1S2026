@@ -35,10 +35,10 @@ public class Curso {
     @Min(value = 1, message = "Los Creditos no pueden ser menor a 1")
     private int creditos;
 
-
-    @Pattern(regexp = "[A-za-z]+")
+    @NotBlank()
     private String area;
 
+    private int totalCreditos;
 
     /*Vamos a hacer la relación entre el Curso y las publicaciones
     * un curso puede tener varias publicaciones */
@@ -53,7 +53,18 @@ public class Curso {
         this.nombre = nombre;
         this.creditos = creditos;
         this.area = area;
+        this.totalCreditos =0;
     }
+
+
+    public void setCreditostotales(int creditos){
+        this.totalCreditos += creditos;
+    }
+
+
+
+
+
 
 
 

@@ -9,6 +9,7 @@ import MostrarCursos from "../templates/cursos";
 import MostrarCatedraticos from "../templates/catedraticos";
 import Layout from "../components/encapsular"
 import Filtrar from "../templates/Filtrar";
+import RecuperarContra from "../templates/recuperar";
 
 export default function AppRouter() {
 
@@ -21,6 +22,7 @@ export default function AppRouter() {
         {/* Login */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/recuperar-password" element={<RecuperarContra/>} />
 
 
         <Route element={< Layout />}>

@@ -27,7 +27,13 @@ export default function Register(){
 
         try {
             const response = await registrarUsuario(Number(registro), nombre, apellido, correo, password);
-            navigator("/")
+            if(response.ok){
+                navigator("/")
+
+            }else{
+                setError("No hay Respuesta del Backend")
+            }
+            
         } catch (error) {
             setError("Ocurrio un Error al Registrar Usuario 404"); 
         }

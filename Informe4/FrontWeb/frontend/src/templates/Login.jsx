@@ -73,6 +73,11 @@ const handleSubmit = async (e) => {
 
     )}
 
+    <br />
+    <br />
+  
+    <a onClick={() => navigate("/recuperar-password")}> ¿Has olvidado tu Contraseña?</a>
+
 
     </section>
 

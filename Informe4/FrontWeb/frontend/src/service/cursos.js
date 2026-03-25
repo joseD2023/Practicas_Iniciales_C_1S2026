@@ -22,3 +22,28 @@ export const obtenerCursos = async() =>{
            
     }
 }
+
+
+
+//obtener curso id 
+
+export const obtenerCursoId = async(id) =>{
+    try {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method:"GET", 
+            credentials : "include"
+        }); 
+
+        if(!response.ok){
+            throw new Error("Error No se encontro Cursos Id");
+            
+        }
+
+        return await response.json(); 
+
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}

@@ -4,6 +4,7 @@ package org.example.practicaweb.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,10 +23,10 @@ public class Catedratico {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Pattern(regexp = "^(?=.*[A-Za-z])[A-Za-z ]+$")
+    @NotBlank
     private String nombre;
 
-    @Pattern(regexp = "^(?=.*[A-Za-z])[A-Za-z ]+$")
+    @NotBlank()
     private String apellido;
 
     @Email(message = "Correo Invalido")

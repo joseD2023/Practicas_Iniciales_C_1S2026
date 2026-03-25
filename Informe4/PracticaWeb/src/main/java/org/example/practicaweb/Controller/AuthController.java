@@ -77,9 +77,15 @@ public class AuthController {
     @PostMapping ("/recuperar-password")
     public ResponseEntity<?> obtenerPasswordNew(@RequestBody RecuperarPassword recuperarPassword){
         if(userService.recuperarPasswordOlvidado(recuperarPassword)){
-            return ResponseEntity.ok("Contraseña Actualizada Correctamente");
+            return ResponseEntity.ok().build();
         }
-
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Datos Incorrectos");
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?>cerrarSesion(HttpServletRequest request){
+        //vamos a cerrar sesiones
+        request.getSession().invalidate();
+        return ResponseEntity.ok().build(); //respuesta 202 sesión cerrada
     }
 }

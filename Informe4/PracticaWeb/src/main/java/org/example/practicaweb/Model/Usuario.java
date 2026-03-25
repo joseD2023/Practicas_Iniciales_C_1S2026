@@ -49,6 +49,9 @@ public class Usuario {
     private String password;
 
 
+    private int totalCreditos;
+
+
     /*Relación dice un Usuario puede hacer muchos Comentarios como también puede hacer puede tener muchas publicaciones
     * entonces
     * -Datos Importantes:

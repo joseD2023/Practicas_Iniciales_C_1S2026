@@ -25,6 +25,7 @@ public class ControllerCursoAprobado {
     }
 
 
+
     @PostMapping()
     public ResponseEntity<CursoAprobado> crearCursoAprobado(@RequestBody CursoAprobado cursoNuevo){
         CursoAprobado curso = cursoAprobadoService.createCursoAprobado(cursoNuevo);
@@ -32,5 +33,9 @@ public class ControllerCursoAprobado {
     }
 
 
+    @GetMapping("/mis-cursos")
+    public List<CursoAprobado> obtenerCursosAprobadosId(){
+        return cursoAprobadoService.cursosAprobadosId();
+    }
 
 }

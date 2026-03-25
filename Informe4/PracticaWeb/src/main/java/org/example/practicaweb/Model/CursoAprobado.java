@@ -32,14 +32,15 @@ public class CursoAprobado {
 
     private LocalDate fechaAprobacion;
 
+    private int creditosTotales;
+
+
+    //lo que podriamos tener tambien es un contador de creditos
+
     public CursoAprobado(String nombreCursos, int creditos, LocalDate fechaAprobacion){
         this.nombreCursos = nombreCursos;
         this.creditos = creditos;
         this.fechaAprobacion = fechaAprobacion;
-    }
-
-    public void incrementosCreditos(int creditosAumentar){
-        this.creditos += creditosAumentar;
     }
 
 

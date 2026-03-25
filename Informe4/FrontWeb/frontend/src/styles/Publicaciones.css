@@ -2,16 +2,19 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
-    
 
+}
+
+
+.publicaciones-container h1{
+    margin-top: 8px;
+    padding: 20px;
 }
 
 
 
 
-h1{
-    margin-top: 40px;
-}
+
 
 /*GRID tipo galería */
 .publicaciones-lista {
@@ -91,6 +94,7 @@ h1{
     border-top: 4px solid #017bab;
     color: white;
 }
+
 
 
 .form-publicacion h2{

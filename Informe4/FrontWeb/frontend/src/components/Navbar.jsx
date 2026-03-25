@@ -2,6 +2,7 @@
 //aqui vamos a utilizar las rutas de cambios de paginas 
 import { NavLink } from "react-router-dom";
 import "../styles/nav.css"
+import Sesion from "../templates/sesion";
 
 
 export default function NavBar(){
@@ -13,7 +14,7 @@ export default function NavBar(){
                     <li>
                         <NavLink
                         to={"/home"}
-                        className={({isActive}) => (isActive? 'active' : undefined)}>Inicio</NavLink>
+                        className={({isActive}) => (isActive? 'active' : undefined)}>Mi Perfil</NavLink>
                     </li>
 
                     <li>
@@ -27,14 +28,6 @@ export default function NavBar(){
                         to={"/usuarios"} //esta parte se encuentra en route
                         className={({isActive}) => (isActive? 'active': undefined)}>
                             Usuarios
-                        </NavLink>
-                    </li>
-
-                    <li>
-                        <NavLink
-                        to={"/"}
-                        className={({isActive})=> (isActive? 'active' : undefined)}>
-                            Comentarios
                         </NavLink>
                     </li>
 
@@ -55,11 +48,10 @@ export default function NavBar(){
                     </li>
 
                     <li>
-                        <NavLink
-                        to={"/"}
-                        className={({isActive})=> (isActive? 'active':undefined)}>
-                            Cursos Aprobados
-                        </NavLink>
+
+                        <Sesion />
+           
+
                     </li>
                 </ul>
             </nav>

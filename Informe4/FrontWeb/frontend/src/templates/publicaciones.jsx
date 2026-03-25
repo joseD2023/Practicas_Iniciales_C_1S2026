@@ -49,6 +49,11 @@ export default function Publicaciones() {
             return; 
         }
 
+        if(!cursoSeleccionado && !catedraticoSeleccionado){
+            setError("No se puede enviar Sin Escoger Entre Cursos o Catedratico")
+            return; 
+        }
+
     
         const nuevaPublicacion = {
         titulo : titulo, 
@@ -220,8 +225,9 @@ export default function Publicaciones() {
                         <h2>{pub.titulo}</h2>
                         <p>{pub.contenido}</p>
                         <p>{pub.fechaCreacion}</p>
+                        <p>Autor publicacion: {pub.usuario.nombre} &nbsp {pub.usuario.apellido}</p>
                         <p>ID Publicacion:{pub.id}</p>
-                        <small>Autor: {pub.autor}</small>
+                        
                         
                         <button 
                             className="btn-comentarios"
@@ -230,6 +236,7 @@ export default function Publicaciones() {
                             {comentarioVisible[pub.id] ? 'Ocultar comentarios' : 'Ver comentarios'}
                         </button>
 
+
                         {comentarioVisible[pub.id] && (
                             <div className="comentarios-section">
                                 <h4>Comentarios</h4>
@@ -237,7 +244,7 @@ export default function Publicaciones() {
                                     comentarios[pub.id].map(com => (
                                         <div key={com.id} className="comentario-item">
                                             <strong> ID Comentario: {com.id}:</strong>
-                                            <p>Usuario que lo Publico: {pub.id}</p>
+                                            <p>Comentario de Usuario: {com.usuario.nombre} {com.usuario.apellido}</p>
                                             <p>{com.mensaje}</p>
                                             <small>{new Date(com.fechaCreacion).toLocaleDateString()}</small>
 

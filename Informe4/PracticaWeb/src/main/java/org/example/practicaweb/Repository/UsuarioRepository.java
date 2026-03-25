@@ -24,4 +24,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
     Usuario findByRegistroAcademico(int registroAcademico);  // ← Busca por int  // ← Agrega esto
     Optional<Usuario> findByRegistroAcademicoAndCorreo(Integer registroAcademico,String correo);
 
+
 }

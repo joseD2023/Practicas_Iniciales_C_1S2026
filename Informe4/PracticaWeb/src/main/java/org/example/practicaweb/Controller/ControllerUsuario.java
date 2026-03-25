@@ -44,6 +44,16 @@ public class ControllerUsuario {
         return ResponseEntity.ok(encontrarUsuario);
     }
 
+    @GetMapping("/mi-usuario")
+    public ResponseEntity<?> obtenerMiInformacion(){
+        Usuario encontrado =  usuarioService.findByMyUser();
+        if(encontrado == null){
+            return ResponseEntity.notFound().build(); // 404
+
+        }
+        return ResponseEntity.ok(encontrado);
+    }
+
     @PostMapping()
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario nuevoUsuario){
         Usuario nuevo = null;

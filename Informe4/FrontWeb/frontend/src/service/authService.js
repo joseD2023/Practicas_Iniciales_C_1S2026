@@ -53,8 +53,13 @@ export const registrarUsuario = async(registroAcademico, nombre, apellido, corre
 
 /*Ahora vamos a trabajar con recuperar password */
 
-export const recuperarPasswordUsuario = async (registroAcademico, correo, newPassword) =>{
-  const response = await fetch(`${API_URL}/recuperar-password`,{
+export const recuperarPasswordUsuario = async ({registroAcademico, correoElectronico, password}) =>{
+
+  console.log("Datos Enviados por el Frontend:", registroAcademico , " ", correoElectronico, " ", password)
+
+
+  try {
+    const response = await fetch(`${API_URL}/recuperar-password`,{
     method : "POST", 
     headers : {
       "Content-Type": "application/json"
@@ -62,14 +67,50 @@ export const recuperarPasswordUsuario = async (registroAcademico, correo, newPas
     credentials : "include", 
     body : JSON.stringify({
       registroAcademico, 
-      correo, 
-      newPassword
+      correoElectronico, 
+      password
     })
   }); 
 
-  return response.text();
+  if(!response.ok){
+    throw new Error("Algo paso que el backend mano un error");
+    
+  }
+
+  console.log("Datos finales Enviados: " , response)
+
+  return response.json();
+    
+  } catch (error) {
+    throw new Error(error);
+    
+    
+  }
 
 }; 
+
+
+export const cerrarSesion = async() =>{
+  try {
+
+    const response = await fetch(`${API_URL}/logout`,{
+      method: "POST", 
+      credentials: "include"
+    }); 
+
+    if(!response.ok){
+      throw new Error("Surgio un Error para Cerrar Sesion");
+      
+    }
+
+    console.log("Sesion Cerrada Exitosamente!!"); 
+
+  } catch (error) {
+
+    console.log(error); 
+    
+  }
+}
 
 
 
