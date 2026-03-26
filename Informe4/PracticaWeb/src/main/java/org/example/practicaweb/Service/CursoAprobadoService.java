@@ -29,10 +29,8 @@ public class CursoAprobadoService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String registroAcademico = authentication.getName();
-        System.out.println("AUTH NAME: " + registroAcademico);
         Usuario usuario = usuarioRepository.findByRegistroAcademico(Integer.parseInt(registroAcademico));
         curso.setUsuario(usuario);
-        System.out.println("USUARIO: " + usuario);
         int aux = curso.getCreditos() + usuario.getTotalCreditos();
         usuario.setTotalCreditos(aux); //aquí incrementamos los creditos con los cursos agregados
         return cursoAprobadoRepository.save(curso);
@@ -50,6 +48,16 @@ public class CursoAprobadoService {
         String registroAcademico = authentication.getName(); //logueado
         Usuario usuario = usuarioRepository.findByRegistroAcademico(Integer.parseInt(registroAcademico));
         return cursoAprobadoRepository.findByUsuario(usuario);
+    }
+
+    public List<CursoAprobado> cursosIdAprobados(Long id){
+        List<CursoAprobado> susListas = new ArrayList<>();
+        for(CursoAprobado ca : cursoAprobadoRepository.findAll()){
+            if(ca.getUsuario().getId().equals(id)){
+                susListas.add(ca);
+            }
+        }
+        return susListas;
     }
 
 

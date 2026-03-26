@@ -4,6 +4,33 @@
     box-sizing: border-box;
 }
 
+.buscador-usu{
+    margin-top: 50px;
+}
+
+.buscador-usu input{
+    padding: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buscador-usu input:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+}
+
+.buscador-usu button{
+    padding: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.buscador-usu button:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+}
+
 body {
     font-family: Roboto, sans-serif;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
@@ -83,6 +110,7 @@ body {
 
 .cursos-aprobados-card{
     background: linear-gradient(135deg, #1e3c72, #2a5298);
+    margin-top: -40px;
     color: white;
     border-radius: 12px;
     padding: 20px;

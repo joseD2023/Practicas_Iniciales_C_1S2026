@@ -54,6 +54,12 @@ public class ControllerUsuario {
         return ResponseEntity.ok(encontrado);
     }
 
+
+    @GetMapping("/registro/{registro}")
+    public Usuario obtenerPorRegistro(@PathVariable int registro){
+        return usuarioService.getUsuarioRegistroAcademico(registro); //me trae la informacion del usuario
+    }
+
     @PostMapping()
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario nuevoUsuario){
         Usuario nuevo = null;
@@ -63,6 +69,15 @@ public class ControllerUsuario {
             throw new RuntimeException(e);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
+    }
+
+
+
+    //para actualizar utilizando autenticacion
+    @PutMapping("/me")
+    public ResponseEntity<Usuario> modificarUsuario(@RequestBody Usuario actualizarUsuario){
+        return ResponseEntity.ok(usuarioService.actualizarUsuario(actualizarUsuario));
+
     }
 
 }

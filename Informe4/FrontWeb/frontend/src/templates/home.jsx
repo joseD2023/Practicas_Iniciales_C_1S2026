@@ -4,6 +4,7 @@ import "../styles/miUsuario.css"
 import { crearCursosAprobados, obtenerCursosAprobados } from "../service/publicacionesService";
 import { obtenerCursoId, obtenerCursos } from "../service/cursos";
 import MostrarMiUsuario from "../components/miUsuario";
+import BuscadorUsuario from "./perfilesUsuarios";
 
 /*vamos a crear como la entrada principal de nuestra pagina o sea un componenete basic y le vamos agregar la opcion de 
 ver cursos aprobados y crear cursos aprobados*/
@@ -120,6 +121,15 @@ export default function Home(){
 
             
             </div > 
+     
+
+            <div className="buscador-usu">
+
+                 <BuscadorUsuario />
+
+            </div>
+
+           
 
             {/*Aqui seria como el otro bloque para trabajar */}
 

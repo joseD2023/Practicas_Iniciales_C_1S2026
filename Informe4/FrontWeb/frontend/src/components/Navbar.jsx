@@ -25,9 +25,9 @@ export default function NavBar(){
 
                     <li>
                         <NavLink 
-                        to={"/usuarios"} //esta parte se encuentra en route
+                        to={"/perfil"} //esta parte se encuentra en route
                         className={({isActive}) => (isActive? 'active': undefined)}>
-                            Usuarios
+                           Perfil
                         </NavLink>
                     </li>
 

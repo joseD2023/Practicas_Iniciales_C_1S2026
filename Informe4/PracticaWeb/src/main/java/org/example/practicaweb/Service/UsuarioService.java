@@ -74,4 +74,33 @@ public class UsuarioService {
         return usuario;
     }
 
+    public Usuario actualizarUsuario(Usuario actualizar){
+        //para que pueda actualizar uno a uno entonces
+
+        //recordemos para que tenga id debe esta autenticado y asi usar el id correctamente
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String registroAcademico = authentication.getName();
+        Usuario usuario = usuarioRepository.findByRegistroAcademico(Integer.parseInt(registroAcademico)); //el usuario que esta autenticado lo vamos a poder modificar
+
+        if(!usuario.getNombre().isEmpty() && !actualizar.getNombre().isEmpty()){
+            usuario.setNombre(actualizar.getNombre());
+        }
+
+        if(!usuario.getApellido().isEmpty() && !actualizar.getApellido().isEmpty()){
+            usuario.setApellido(actualizar.getApellido());
+        }
+
+        if (!usuario.getCorreo().isEmpty() && !actualizar.getCorreo().isEmpty()){
+            usuario.setCorreo(actualizar.getCorreo());
+        }
+
+        if (!usuario.getNombre().isEmpty() && !actualizar.getNombre().isEmpty()){
+            usuario.setPassword(passwordEncoder.encode(actualizar.getPassword()));
+        }
+
+        return usuarioRepository.save(usuario);
+    }
+
+
+
 }

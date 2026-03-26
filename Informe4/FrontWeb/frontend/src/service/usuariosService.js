@@ -44,3 +44,83 @@ export const miUsuario = async() =>{
         
     }
 }
+
+
+
+//aqui vamos a cargar los perfiles de los usuarios con sus cursos aprobados 
+
+const API_URL1 = "http://localhost:8080/api/usuarios"
+
+
+export const perfilUsuario = async(registro) =>{
+    try {
+
+        const response = await fetch(`${API_URL1}/registro/${registro}`, {
+            method: "GET", 
+            credentials: "include"
+        })
+
+        if(!response.ok){
+            throw new Error("Error: No se encontro Usuario ");
+            
+        }
+
+        return await response.json()
+        
+    } catch (error) {
+
+        console.log(error)
+        
+    }
+}
+
+
+const API_URL2 = "http://localhost:8080/api/cursos-aprobados/usuario/registro"
+
+export const cursosPerfiles = async(registro) =>{
+    try {
+        const response = await fetch(`${API_URL2}/${registro}`, {
+            method: "GET", 
+            credentials: "include"
+        })
+
+        if(!response.ok){
+            throw new Error("Error: Cursos del Usuario No tiene");
+            
+        }
+
+        return await response.json(); 
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+//actualizar mi perfil 
+
+export const actualizarPerfil = async(data) =>{
+    try {
+        const response = await fetch(`${API_URL1}/me`,{
+            method:"PUT",
+            credentials: "include", 
+            headers: {
+                "Content-Type": "application/json" 
+            }, 
+            body : JSON.stringify(data)
+
+        })
+
+        if(!response.ok){
+            throw new Error("Error al actualizar");
+            
+        }
+
+        return await response.json(); 
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}

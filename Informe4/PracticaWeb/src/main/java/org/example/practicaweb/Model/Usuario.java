@@ -32,11 +32,10 @@ public class Usuario {
     * venir datos null (int utilizarlo en cosas que si estábamos seguros que van a venir como contadores) */
 
 
-    @Pattern(regexp = "[A-Za-z]+") /*empresion regular que dice que puede venir en mayuscula o minuscula
-    uno o varias veces*/
+    @NotBlank
     private String nombre;
 
-    @Pattern(regexp = "[A-Za-z]+")
+    @NotBlank
     private String apellido;
 
 
