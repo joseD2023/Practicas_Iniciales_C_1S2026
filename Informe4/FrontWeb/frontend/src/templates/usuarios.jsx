@@ -15,6 +15,7 @@ export default function Perfil(){
     const [apellido, setApellido] = useState("");
     const [correo, setCorreo] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(null)
 
     useEffect(() => {
 
@@ -41,6 +42,12 @@ export default function Perfil(){
 
     const guardarCambios = async () => {
 
+
+        if(!nombre && !apellido && !correo && !password){
+            setError("Todos los campos no pueden Estar Vacios")
+            return; 
+        }
+
         const datos = {
             nombre: nombre,
             apellido: apellido,
@@ -51,11 +58,14 @@ export default function Perfil(){
         try {
             const actualizado = await actualizarPerfil(datos);
             setUsuario(actualizado);
+
+
             alert("Estos Datos Unicamente te Afectaran a ti y no a otro usuario :)")
             alert("Usuario actualizado");
 
         } catch (error) {
             console.log(error);
+            setError("Error al Actualizar el perfil")
         }
     };
 
@@ -104,6 +114,21 @@ export default function Perfil(){
                 </button>
 
             </form>
+
+            {error && (
+                <div style={
+                    {
+                        background: "#2c2c2c",
+                        color : "#fff",
+                        padding : "15px", 
+                        borderRadius: "10px", 
+                        border : "1px solid #ff4d4d", 
+                        marginTop : "90px"
+                    }
+                }>
+                    <strong>Error: </strong> {error}
+                </div>
+            )}
 
 
 

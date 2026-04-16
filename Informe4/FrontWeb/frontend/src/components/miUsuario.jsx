@@ -34,6 +34,8 @@ export default function MostrarMiUsuario(){
         }
     }
 
+    //cuando utilizamos objetos dentro de react solo debemos acceder a sus atributos no recorrerlos como un array 
+
     return (
         <div className="raiz-usuario">
 

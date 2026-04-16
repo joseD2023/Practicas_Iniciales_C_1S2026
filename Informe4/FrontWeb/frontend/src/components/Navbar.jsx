@@ -11,17 +11,19 @@ export default function NavBar(){
             <nav className="nav">
 
                 <ul>
-                    <li>
-                        <NavLink
-                        to={"/home"}
-                        className={({isActive}) => (isActive? 'active' : undefined)}>Mi Perfil</NavLink>
-                    </li>
 
                     <li>
                         <NavLink 
                         to={"/publicaciones"}
                         className={({isActive}) => (isActive? 'active': undefined)}>Publicaciones</NavLink>
                     </li>
+
+                    <li>
+                        <NavLink
+                        to={"/home"}
+                        className={({isActive}) => (isActive? 'active' : undefined)}>Mi Perfil</NavLink>
+                    </li>
+
 
                     <li>
                         <NavLink 

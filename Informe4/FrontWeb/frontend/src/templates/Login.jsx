@@ -8,6 +8,7 @@ export default function Login() {
   const [registroAcademico, setRegistro] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); 
 
   //guardamos lo que escribe los usuarios en los enpoints 
 
@@ -15,6 +16,8 @@ export default function Login() {
 
 const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null); 
+    setLoading(true); 
 
     try {
 
@@ -27,7 +30,6 @@ const handleSubmit = async (e) => {
       if(res.ok){ //usamo el http OK 201 del backend 
         navigate("/home")
       }else{
-        console.log("No peude Ingresar con usuarios Invalidos")
         setError("Usuario Invalido")
         return; 
       }
@@ -35,16 +37,30 @@ const handleSubmit = async (e) => {
         
     } catch (error) {
         console.error("Error en login:", error);
+        setError("Error en el Servidor, Intente mas Tarde")
+    }finally{
+        setLoading(false); 
     }; 
  };
 
 
   return (
 
+    <div>
+
+      
+    <div className="server">
+      {loading && (
+        <div className="server-cargar">
+          <p>Conectando al Servidor...</p>
+        </div>
+      )}
+    </div>
+
 
     <section className="form-login">
+      
       <h3>Login Usuario</h3>
-
       <form onSubmit={handleSubmit}>
       <input className="controls"
         placeholder="Registro Académico" value={registroAcademico} onChange={(e)=>setRegistro(e.target.value)}/>
@@ -56,6 +72,10 @@ const handleSubmit = async (e) => {
     <br />
 
     <button className="btn-register" onClick={() => navigate("/register")}>Registrar</button>
+    <br />
+    <br />
+
+    <a onClick={() => navigate("/recuperar-password")}> ¿Has olvidado tu Contraseña?</a>
 
     {error && (
       <div style={{
@@ -74,14 +94,21 @@ const handleSubmit = async (e) => {
     )}
 
     <br />
-    <br />
   
-    <a onClick={() => navigate("/recuperar-password")}> ¿Has olvidado tu Contraseña?</a>
+
+
+
 
 
     </section>
 
 
+
+
+
+    </div>
+
+    
 
 
 

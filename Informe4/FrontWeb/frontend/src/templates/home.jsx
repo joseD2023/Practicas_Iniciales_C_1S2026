@@ -14,6 +14,7 @@ export default function Home(){
     const[creditos, setCreditos] = useState(""); 
     const[curso, setCurso] = useState([]);  //para obtener todos los cursos
     const[error, setError] = useState(""); 
+    
 
 
 
@@ -38,6 +39,11 @@ export default function Home(){
 
        if(!cursoEncontrado){
         setError("Cursos No Encontrados")
+        return; 
+       }
+
+       if(!creditos){
+        setError("Ingrese Creditos"); 
         return; 
        }
 
@@ -74,7 +80,7 @@ export default function Home(){
     }
 
 
-    const cargarCursos = async() =>{
+    const cargarCursos = async() =>{ //cargando los cursos par el select 
         try {
             const response = await obtenerCursos()
             setCurso(response)
@@ -118,6 +124,22 @@ export default function Home(){
                     <button type="submit">Aprobado</button>
 
                 </form>
+
+                {error && (
+                    <div style={
+                        {
+                            background: "#2c2c2c",
+                            color: "white", 
+                            padding: "15px",
+                            borderRadius: "10px", 
+                            border: "1px solid #ff4d4d",
+                            marginTop: "90px" 
+                        }
+                    }>
+                        <strong>Error:</strong>{error}
+
+                    </div>
+                )}
 
             
             </div > 
